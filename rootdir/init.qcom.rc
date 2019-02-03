@@ -30,6 +30,8 @@ on init
 on fs
     mount_all ./fstab.qcom --early
 
+    setprop sys.usb.ffs.aio_compat 1
+
     restorecon /data/misc/audio/mbhc.bin
     restorecon /data/misc/audio/wcd9310_anc.bin
     restorecon /cache/qcks/acdb.bin
@@ -43,10 +45,10 @@ on fs
 
 on late-fs
     # Start services for bootanim
+    start vendor.configstore-hal
     start surfaceflinger
     start bootanim
-    start configstore-hal-1-0
-    start gralloc-2-0
+    start vendor.gralloc-2-0
 
     mount_all ./fstab.qcom --late
 
@@ -270,6 +272,12 @@ service hci_attach /system/bin/sh /system/etc/init.qcom.bt.sh
     disabled
     oneshot
     seclabel u:r:hci_attach:s0
+
+on property:bluetooth.hciattach=true
+    start hci_attach
+
+on property:bluetooth.hciattach=false
+    setprop bluetooth.status off
 
 on property:vendor.bluetooth.hciattach=true
     start hci_attach

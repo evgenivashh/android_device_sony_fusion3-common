@@ -135,23 +135,24 @@ void set_permissions()
 int main(int argc, char **argv)
 {
     int err = 0;
-    SLOGD("import starting\n");
+    SLOGD("importation starting\n");
 
     /* Unused parameters */
-    if (argc > 2) {
-        SLOGD("parameters unneeded %d : %.50s\n", argc - 2, argv[2]);
+    if (argc > 1) {
+        SLOGD("parameters unneeded %d : %.50s\n", argc - 1, argv[1]);
+        return 1;
     }
 
     /* Set correct permissions for existing files */
     set_permissions();
 
-    /* WiFi Serial Number import */
+    /* WiFi Serial Number importation */
     err |= read_mac(WLAN_SERIAL_TAID, WLAN_SERIAL_PNTR, WLAN_SERIAL_FILE, TYPE_SERIAL);
 
-    /* WiFi MAC import */
+    /* WiFi MAC importation */
     err |= read_mac(WLAN_MAC_TAID, WLAN_MAC_PNTR, WLAN_MAC_FILE, TYPE_MAC);
 
-    /* Bluetooth MAC import */
+    /* Bluetooth MAC importation */
     err |= read_mac(BT_MAC_TAID, BT_MAC_PNTR, BT_MAC_FILE, TYPE_MAC);
 
     /* Set correct permissions after files creations */

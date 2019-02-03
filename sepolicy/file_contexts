@@ -65,6 +65,9 @@
 /(vendor|system/vendor)/bin/thermanager                                           u:object_r:thermanager_exec:s0
 
 # /sys
+/sys/block/mmcblk1/queue/iosched/slice_idle                                       u:object_r:sysfs_block_iosched:s0
+/sys/bus/i2c(/.*)?                                                                u:object_r:sysfs_bus_i2c:s0
+/sys/class/gpio(/.*)?                                                             u:object_r:sysfs_gpio:s0
 /sys/class/power_supply/battery(/.*)?                                             u:object_r:sysfs_batteryinfo:s0
 /sys/class/thermal(/.*)?                                                          u:object_r:sysfs_thermal:s0
 /sys/devices/i2c-0/0-002c/backlight/lcd-backlight(/.*)?                           u:object_r:sysfs_leds:s0
@@ -80,6 +83,7 @@
 /sys/devices/platform/wcnss_wlan.0/serial_number                                  u:object_r:sysfs_mac_serial:s0
 /sys/devices/platform/wcnss_wlan.0/wcnss_mac_addr                                 u:object_r:sysfs_mac_address:s0
 /sys/devices/platform/wcnss_wlan.0/thermal_mitigation                             u:object_r:sysfs_thermal:s0
+/sys/devices/system/soc/soc0/id                                                   u:object_r:sysfs_system_soc:s0
 /sys/devices/virtual/graphics/fb([0-2])+/hpd                                      u:object_r:sysfs_surfaceflinger:s0
 /sys/devices/virtual/graphics/fb([0-2])+/vendor_name                              u:object_r:sysfs_surfaceflinger:s0
 /sys/devices/virtual/graphics/fb([0-2])+/product_description                      u:object_r:sysfs_surfaceflinger:s0

@@ -6,11 +6,11 @@ PRODUCT_COPY_FILES += \
 # Audio properties
 PRODUCT_PROPERTY_OVERRIDES += \
     audio.offload.disable=1 \
-    media.aac_51_output_enabled=true \
-    persist.vendor.audio.fluence.voicecall=true \
-    persist.vendor.audio.fluence.voicerec=false \
-    persist.vendor.audio.fluence.speaker=true \
+    mm.enable.smoothstreaming=true \
+    persist.audio.fluence.voicecall=true \
+    persist.audio.fluence.voicerec=false \
+    persist.audio.fluence.speaker=true \
     qcom.hw.aac.encoder=true \
     ro.config.media_vol_steps=25 \
     ro.config.vc_call_vol_steps=7 \
-    ro.vendor.audio.sdk.fluencetype=fluence
+    ro.qc.sdk.audio.fluencetype=fluence
